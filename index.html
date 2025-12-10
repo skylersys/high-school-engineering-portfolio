@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Engineering Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate 50 background */
+        }
+        .project-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Indicate it's clickable */
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Style for the images, using object-cover to fit nicely */
+        .project-image {
+            width: 100%;
+            height: 256px; /* Fixed height for consistency */
+            object-fit: contain; /* Use 'contain' to show the full CAD image */
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center py-12 mb-10 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#1d4ed8]">
+                Engineering Design & CAD Portfolio
+            </h1>
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                Showcasing practical application of design principles and technical documentation using OnShape.
+            </p>
+        </header>
+
+        <!-- Projects Grid -->
+        <main class="grid md:grid-cols-3 gap-8">
+
+            <!-- Project Card 1: VEX Claw Assembly Drawing -->
+            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project1">
+                <img src="./images/image_8eabfe.png" alt="VEX Claw Assembly Drawing" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Claw+Image+Missing';">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">VEX Claw Assembly & Documentation</h2>
+                    <span class="inline-block bg-[#bfdbfe] text-[#1d4ed8] text-xs font-semibold px-3 py-1 rounded-full mb-4">Engineering Drawing</span>
+                    
+                    <div class="text-gray-700">
+                        <!-- Short Description -->
+                        <p class="short-desc">
+                            This project demonstrates **detail orientation and organization** by creating a full assembly drawing with a complete Bill of Materials (BOM) for a VEX Robotics claw. Mastery of complex assembly constraints and standardized documentation is essential for manufacturing, showcasing readiness for BIM/VDC and Project Management roles.
+                        </p>
+                        
+                        <!-- Full Details (Initially Hidden) -->
+                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#1d4ed8] pl-3">
+                            The assembly involved over 15 unique VEX parts, including custom-designed claw fingers and linkages. The drawing follows ANSI standards and includes exploded views, part ballooning, and a detailed BOM specifying quantities and part numbers, directly supporting procurement and assembly processes. This rigorous approach is a core skill for BIM/VDC roles.
+                        </p>
+                    </div>
+
+                    <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
+                        Read More &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Card 2: Arbor Press Model -->
+            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project2">
+                <img src="./images/image_8ea938.png" alt="Arbor Press 3D Model" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Press+Image+Missing';">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">Precision Machined Arbor Press</h2>
+                    <span class="inline-block bg-[#fcd34d] text-[#92400e] text-xs font-semibold px-3 py-1 rounded-full mb-4">Mechanical Design</span>
+                    
+                    <div class="text-gray-700">
+                        <!-- Short Description -->
+                        <p class="short-desc">
+                            A complex 3D modeling exercise focused on simulating a functional arbor press. This project required high **resolve and consistency** in part design, surfacing, and maintaining geometric tolerances, reflecting the standards required in Manufacturing and Field Engineering.
+                        </p>
+                        
+                        <!-- Full Details (Initially Hidden) -->
+                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#fcd34d] pl-3">
+                            Every component of the press, from the base and ram to the geared ratchet, was modeled individually with precise dimensions and mating features. The final assembly used advanced mates (like gear mates and slider joints) to simulate the press's full range of motion. This deep dive into complex assemblies demonstrates technical "Grit" and problem-solving skills necessary for Engineering roles.
+                        </p>
+                    </div>
+
+                    <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
+                        Read More &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Card 3: VEX Component Latch -->
+            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project3">
+                <img src="./images/image_8ea0bb.png" alt="VEX Component Latch Assembly" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Latch+Image+Missing';">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">VEX Component Latch Mechanism</h2>
+                    <span class="inline-block bg-[#d1fae5] text-[#065f46] text-xs font-semibold px-3 py-1 rounded-full mb-4">Assembly Prototyping</span>
+                    
+                    <div class="text-gray-700">
+                        <!-- Short Description -->
+                        <p class="short-desc">
+                            A practical **problem-solving** challenge using standard VEX components to design a robust latching mechanism. This demonstrates a strong **purpose** in applying CAD skills to real-world mechanical constraints and assembly practices, which is crucial for on-site execution and Field roles.
+                        </p>
+                        
+                        <!-- Full Details (Initially Hidden) -->
+                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#065f46] pl-3">
+                            The primary goal was creating a secure, quick-release locking system entirely from standard VEX components (shaft, beams, fasteners). The design was iterated three times to minimize stress points and maximize locking strength, ultimately achieving a simple, elegant solution. This iterative process highlights adaptability and customer-focused design.
+                        </p>
+                    </div>
+
+                    <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
+                        Read More &rarr;
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer / Contact Section -->
+        <footer class="mt-16 text-center pt-8 border-t border-gray-200">
+            <p class="text-gray-500">
+                For more details on these projects or other skills, please refer to my application materials.
+            </p>
+            <p class="mt-2 text-gray-700 font-medium">
+                <a href="mailto:YOUR_EMAIL@example.com" class="text-[#1d4ed8] hover:underline">YOUR_EMAIL@example.com</a>
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+
+            projectCards.forEach(card => {
+                const button = card.querySelector('.read-more-btn');
+                const fullDetails = card.querySelector('.full-details');
+                const shortDesc = card.querySelector('.short-desc');
+
+                button.addEventListener('click', (e) => {
+                    // Prevent the card click from interfering if we had a link/button
+                    e.stopPropagation(); 
+                    
+                    const isHidden = fullDetails.classList.contains('hidden');
+
+                    if (isHidden) {
+                        // Show full details
+                        fullDetails.classList.remove('hidden');
+                        fullDetails.classList.add('block');
+                        shortDesc.classList.add('hidden');
+                        button.textContent = 'Read Less \u2190'; // Left arrow
+                    } else {
+                        // Hide full details
+                        fullDetails.classList.add('hidden');
+                        fullDetails.classList.remove('block');
+                        shortDesc.classList.remove('hidden');
+                        button.textContent = 'Read More \u2192'; // Right arrow
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
