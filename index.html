@@ -16,24 +16,55 @@
         .project-card {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
-            cursor: pointer; /* Indicate it's clickable */
+            cursor: pointer;
         }
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        /* Style for the images, using object-cover to fit nicely */
+        /* Style for the main project images */
         .project-image {
             width: 100%;
             height: 256px; /* Fixed height for consistency */
-            object-fit: contain; /* Use 'contain' to show the full CAD image */
+            object-fit: contain;
             padding: 1rem;
             background-color: #f8fafc;
             border-bottom: 1px solid #e5e7eb;
         }
+
+        /* Modal specific styles */
+        .modal-overlay {
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-open .modal-content {
+            transform: scale(1);
+        }
+        .gallery-thumbnail {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.15s ease;
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            padding: 4px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        .gallery-thumbnail:hover, .gallery-thumbnail.active {
+            border-color: #1d4ed8;
+        }
     </style>
 </head>
-<body>
+<body class="">
 
     <div class="max-w-7xl mx-auto p-4 sm:p-8">
 
@@ -51,79 +82,88 @@
         <main class="grid md:grid-cols-3 gap-8">
 
             <!-- Project Card 1: VEX Claw Assembly Drawing -->
-            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project1">
-                <img src="./images/image_8eabfe.png" alt="VEX Claw Assembly Drawing" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Claw+Image+Missing';">
+            <div 
+                class="project-card bg-white rounded-xl overflow-hidden group" 
+                id="project1"
+                data-title="VEX Claw Assembly & Documentation"
+                data-short-text="This project demonstrates **detail orientation and organization** by creating a full assembly drawing with a complete Bill of Materials (BOM) for a VEX Robotics claw. Mastery of complex assembly constraints and standardized documentation is essential for manufacturing, showcasing readiness for BIM/VDC and Project Management roles."
+                data-full-text="The assembly involved over 15 unique VEX parts, including custom-designed claw fingers and linkages. The drawing follows ANSI standards and includes exploded views, part ballooning, and a detailed BOM specifying quantities and part numbers, directly supporting procurement and assembly processes. This rigorous approach is a core skill for BIM/VDC roles."
+                data-tag-color="bg-[#bfdbfe] text-[#1d4ed8]"
+                data-tag-label="Engineering Drawing"
+                data-image-1-src="./images/claw-3-4.png"
+                data-image-2-src="./images/claw-side.png"
+                data-image-3-src="./images/claw-front.png"
+            >
+                <img src="./images/claw-3-4.png" alt="VEX Claw Assembly Drawing" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Claw+Image+Missing';">
 
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-3">VEX Claw Assembly & Documentation</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3" data-title-text>VEX Claw Assembly & Documentation</h2>
                     <span class="inline-block bg-[#bfdbfe] text-[#1d4ed8] text-xs font-semibold px-3 py-1 rounded-full mb-4">Engineering Drawing</span>
                     
-                    <div class="text-gray-700">
-                        <!-- Short Description -->
-                        <p class="short-desc">
-                            This project demonstrates **detail orientation and organization** by creating a full assembly drawing with a complete Bill of Materials (BOM) for a VEX Robotics claw. Mastery of complex assembly constraints and standardized documentation is essential for manufacturing, showcasing readiness for BIM/VDC and Project Management roles.
-                        </p>
-                        
-                        <!-- Full Details (Initially Hidden) -->
-                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#1d4ed8] pl-3">
-                            The assembly involved over 15 unique VEX parts, including custom-designed claw fingers and linkages. The drawing follows ANSI standards and includes exploded views, part ballooning, and a detailed BOM specifying quantities and part numbers, directly supporting procurement and assembly processes. This rigorous approach is a core skill for BIM/VDC roles.
-                        </p>
-                    </div>
+                    <p class="text-gray-700 short-desc">
+                        This project demonstrates **detail orientation and organization** by creating a full assembly drawing with a complete Bill of Materials (BOM) for a VEX Robotics claw. Mastery of complex assembly constraints and standardized documentation is essential for manufacturing, showcasing readiness for BIM/VDC and Project Management roles.
+                    </p>
 
                     <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
-                        Read More &rarr;
+                        View Details &rarr;
                     </button>
                 </div>
             </div>
 
             <!-- Project Card 2: Arbor Press Model -->
-            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project2">
-                <img src="./images/image_8ea938.png" alt="Arbor Press 3D Model" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Press+Image+Missing';">
+            <div 
+                class="project-card bg-white rounded-xl overflow-hidden group" 
+                id="project2"
+                data-title="Precision Machined Arbor Press"
+                data-short-text="A complex 3D modeling exercise focused on simulating a functional arbor press. This project required high **resolve and consistency** in part design, surfacing, and maintaining geometric tolerances, reflecting the standards required in Manufacturing and Field Engineering."
+                data-full-text="Every component of the press, from the base and ram to the geared ratchet, was modeled individually with precise dimensions and mating features. The final assembly used advanced mates (like gear mates and slider joints) to simulate the press's full range of motion. This deep dive into complex assemblies demonstrates technical &quot;Grit&quot; and problem-solving skills necessary for Engineering roles."
+                data-tag-color="bg-[#fcd34d] text-[#92400e]"
+                data-tag-label="Mechanical Design"
+                data-image-1-src="./images/press-3-4.png"
+                data-image-2-src="./images/press-side.png"
+                data-image-3-src="./images/press-front.png"
+            >
+                <img src="./images/press-3-4.png" alt="Arbor Press 3D Model" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Press+Image+Missing';">
 
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-3">Precision Machined Arbor Press</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3" data-title-text>Precision Machined Arbor Press</h2>
                     <span class="inline-block bg-[#fcd34d] text-[#92400e] text-xs font-semibold px-3 py-1 rounded-full mb-4">Mechanical Design</span>
                     
-                    <div class="text-gray-700">
-                        <!-- Short Description -->
-                        <p class="short-desc">
-                            A complex 3D modeling exercise focused on simulating a functional arbor press. This project required high **resolve and consistency** in part design, surfacing, and maintaining geometric tolerances, reflecting the standards required in Manufacturing and Field Engineering.
-                        </p>
-                        
-                        <!-- Full Details (Initially Hidden) -->
-                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#fcd34d] pl-3">
-                            Every component of the press, from the base and ram to the geared ratchet, was modeled individually with precise dimensions and mating features. The final assembly used advanced mates (like gear mates and slider joints) to simulate the press's full range of motion. This deep dive into complex assemblies demonstrates technical "Grit" and problem-solving skills necessary for Engineering roles.
-                        </p>
-                    </div>
+                    <p class="text-gray-700 short-desc">
+                        A complex 3D modeling exercise focused on simulating a functional arbor press. This project required high **resolve and consistency** in part design, surfacing, and maintaining geometric tolerances, reflecting the standards required in Manufacturing and Field Engineering.
+                    </p>
 
                     <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
-                        Read More &rarr;
+                        View Details &rarr;
                     </button>
                 </div>
             </div>
 
             <!-- Project Card 3: VEX Component Latch -->
-            <div class="project-card bg-white rounded-xl overflow-hidden group" id="project3">
-                <img src="./images/image_8ea0bb.png" alt="VEX Component Latch Assembly" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Latch+Image+Missing';">
+            <div 
+                class="project-card bg-white rounded-xl overflow-hidden group" 
+                id="project3"
+                data-title="VEX Component Latch Mechanism"
+                data-short-text="A practical **problem-solving** challenge using standard VEX components to design a robust latching mechanism. This demonstrates a strong **purpose** in applying CAD skills to real-world mechanical constraints and assembly practices, which is crucial for on-site execution and Field roles."
+                data-full-text="The primary goal was creating a secure, quick-release locking system entirely from standard VEX components (shaft, beams, fasteners). The design was iterated three times to minimize stress points and maximize locking strength, ultimately achieving a simple, elegant solution. This iterative process highlights adaptability and customer-focused design."
+                data-tag-color="bg-[#d1fae5] text-[#065f46]"
+                data-tag-label="Assembly Prototyping"
+                data-image-1-src="./images/latch-3-4.png"
+                data-image-2-src="./images/latch-side.png"
+                data-image-3-src="./images/latch-front.png"
+            >
+                <img src="./images/latch-3-4.png" alt="VEX Component Latch Assembly" class="project-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/d1d5db/4b5563?text=Latch+Image+Missing';">
 
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-3">VEX Component Latch Mechanism</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3" data-title-text>VEX Component Latch Mechanism</h2>
                     <span class="inline-block bg-[#d1fae5] text-[#065f46] text-xs font-semibold px-3 py-1 rounded-full mb-4">Assembly Prototyping</span>
                     
-                    <div class="text-gray-700">
-                        <!-- Short Description -->
-                        <p class="short-desc">
-                            A practical **problem-solving** challenge using standard VEX components to design a robust latching mechanism. This demonstrates a strong **purpose** in applying CAD skills to real-world mechanical constraints and assembly practices, which is crucial for on-site execution and Field roles.
-                        </p>
-                        
-                        <!-- Full Details (Initially Hidden) -->
-                        <p class="full-details mt-2 hidden transition-all duration-300 ease-in-out text-sm border-l-2 border-[#065f46] pl-3">
-                            The primary goal was creating a secure, quick-release locking system entirely from standard VEX components (shaft, beams, fasteners). The design was iterated three times to minimize stress points and maximize locking strength, ultimately achieving a simple, elegant solution. This iterative process highlights adaptability and customer-focused design.
-                        </p>
-                    </div>
+                    <p class="text-gray-700 short-desc">
+                        A practical **problem-solving** challenge using standard VEX components to design a robust latching mechanism. This demonstrates a strong **purpose** in applying CAD skills to real-world mechanical constraints and assembly practices, which is crucial for on-site execution and Field roles.
+                    </p>
 
                     <button class="read-more-btn mt-4 inline-flex items-center text-sm font-medium text-[#1d4ed8] hover:text-[#2563eb] transition duration-150 ease-in-out">
-                        Read More &rarr;
+                        View Details &rarr;
                     </button>
                 </div>
             </div>
@@ -142,35 +182,167 @@
 
     </div>
 
+    <!-- Project Detail Modal (Hidden by default) -->
+    <div id="project-modal" class="modal-overlay fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none">
+        <div class="modal-content bg-white rounded-xl shadow-2xl p-6 relative w-full lg:w-3/4 transform transition-transform duration-300">
+            
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 focus:outline-none p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- Left Column: Images -->
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-3xl font-extrabold text-gray-800 mb-4 lg:hidden" id="modal-title-mobile"></h2>
+                    <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                        <!-- Main Image Display -->
+                        <img id="modal-main-image" src="" alt="Project main view" class="w-full h-80 object-contain rounded-md">
+                    </div>
+
+                    <!-- Thumbnail Gallery -->
+                    <div id="modal-thumbnails" class="grid grid-cols-3 gap-2">
+                        <!-- Thumbnails will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Right Column: Text Details -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl font-extrabold text-gray-800 mb-2 hidden lg:block" id="modal-title-desktop"></h2>
+                    <span id="modal-tag" class="text-xs font-semibold px-3 py-1 rounded-full mb-4 inline-block"></span>
+                    
+                    <div class="mt-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Project Overview:</h3>
+                        <p id="modal-full-text" class="text-gray-700 leading-relaxed"></p>
+                        
+                        <h3 class="text-xl font-bold text-gray-800 mt-4 mb-2">Skills Demonstrated:</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
+                            <li>Detail Orientation & Documentation (BOM, Drawings)</li>
+                            <li>Complex Assembly & Mating (Joints, Motion)</li>
+                            <li>Iterative Design & Problem-Solving (Refining the Mechanism)</li>
+                            <li>Technical Communication (Presenting multiple views)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('project-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const mainImage = document.getElementById('modal-main-image');
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+            const modalTitleDesktop = document.getElementById('modal-title-desktop');
+            const modalTitleMobile = document.getElementById('modal-title-mobile');
+            const modalTag = document.getElementById('modal-tag');
+            const modalFullText = document.getElementById('modal-full-text');
             const projectCards = document.querySelectorAll('.project-card');
 
-            projectCards.forEach(card => {
-                const button = card.querySelector('.read-more-btn');
-                const fullDetails = card.querySelector('.full-details');
-                const shortDesc = card.querySelector('.short-desc');
-
-                button.addEventListener('click', (e) => {
-                    // Prevent the card click from interfering if we had a link/button
-                    e.stopPropagation(); 
+            // --- Function to open the modal ---
+            const openModal = (card) => {
+                const title = card.dataset.title;
+                // Replace encoded quotes (&quot;) with double quotes (") for clean display
+                const fullText = card.dataset.fullText.replace(/&quot;/g, '"'); 
+                const tagColor = card.dataset.tagColor;
+                const tagLabel = card.dataset.tagLabel;
+                
+                // Get all image URLs (now only 3)
+                const images = [];
+                for (let i = 1; i <= 3; i++) { // Loop only 3 times
+                    // Check for the specific data attribute naming convention
+                    const src = card.getAttribute(`data-image-${i}-src`);
                     
-                    const isHidden = fullDetails.classList.contains('hidden');
+                    let alt = '';
+                    if (i === 1) alt = `${title} 3/4 Isometric View`;
+                    if (i === 2) alt = `${title} Side View`;
+                    if (i === 3) alt = `${title} Front View`;
 
-                    if (isHidden) {
-                        // Show full details
-                        fullDetails.classList.remove('hidden');
-                        fullDetails.classList.add('block');
-                        shortDesc.classList.add('hidden');
-                        button.textContent = 'Read Less \u2190'; // Left arrow
-                    } else {
-                        // Hide full details
-                        fullDetails.classList.add('hidden');
-                        fullDetails.classList.remove('block');
-                        shortDesc.classList.remove('hidden');
-                        button.textContent = 'Read More \u2192'; // Right arrow
+                    if (src) images.push({ src: src, alt: alt });
+                }
+
+                // 1. Populate Text and Titles
+                modalTitleDesktop.textContent = title;
+                modalTitleMobile.textContent = title;
+                modalTag.className = tagColor + ' text-xs font-semibold px-3 py-1 rounded-full mb-4 inline-block';
+                modalTag.textContent = tagLabel;
+                modalFullText.innerHTML = fullText;
+
+                // 2. Populate Images and Thumbnails
+                thumbnailsContainer.innerHTML = ''; // Clear previous thumbnails
+                mainImage.src = images.length > 0 ? images[0].src : ''; // Set first image (3/4 view) as main
+                mainImage.alt = images.length > 0 ? images[0].alt : '';
+                
+                images.forEach((imgData, index) => {
+                    const img = document.createElement('img');
+                    img.src = imgData.src;
+                    img.alt = imgData.alt;
+                    img.className = 'gallery-thumbnail';
+                    if (index === 0) img.classList.add('active'); // Mark first as active
+
+                    img.addEventListener('click', () => {
+                        mainImage.src = imgData.src; // Change main image
+                        mainImage.alt = imgData.alt;
+                        
+                        // Update active state
+                        thumbnailsContainer.querySelectorAll('.gallery-thumbnail').forEach(thumb => {
+                            thumb.classList.remove('active');
+                        });
+                        img.classList.add('active');
+                    });
+
+                    thumbnailsContainer.appendChild(img);
+                });
+
+
+                // 3. Show Modal
+                modal.classList.add('modal-open');
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            };
+
+            // --- Function to close the modal ---
+            const closeModal = () => {
+                modal.classList.remove('modal-open');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            // --- Event Listeners ---
+            projectCards.forEach(card => {
+                // Attach event listener to the button
+                const button = card.querySelector('.read-more-btn');
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    openModal(card);
+                });
+                // Also attach event listener to the whole card for convenience
+                card.addEventListener('click', (e) => {
+                    // Check if the click wasn't on the button itself (to avoid double trigger)
+                    if (e.target !== button && !button.contains(e.target)) {
+                         openModal(card);
                     }
                 });
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside the content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape" && modal.classList.contains('modal-open')) {
+                    closeModal();
+                }
             });
         });
     </script>
